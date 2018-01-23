@@ -1,10 +1,22 @@
 pipeline {
   agent any
+  tools{
+    maven 'maven-3'
+    jdk 'Java-8'
+  }
   stages {
-    stage('Build') {
+    stage('Pipeline Test') {
       steps {
         echo 'Building maven job'
       }
     }
+    stage('Maven Test'){
+      steps {
+        sh '''
+      echo "PATH = ${PATH}"
+      echo "M2_HOME = ${M2_HOME}"
+      '''
+      }
+    } 
   }
 }
